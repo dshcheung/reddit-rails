@@ -4,13 +4,17 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-  def create
-    # post = Post.new(title: params[:post][:title], url: params[:post][:url])
-    post = Post.new(post_params)
-    if post.save
-      redirect_to posts_path
+    def create
+      # post = Post.new(title: params[:post][:title], url: params[:post][:url])
+      post = Post.new(post_params)
+      if post.save
+        redirect_to :back
+      else
+        flash[:message] = post.errors.messages
+        redirect_to :back
+        # render 'index'
+      end
     end
-  end
 
   def show
     @post = Post.find(params[:id])
@@ -21,3 +25,4 @@ class PostsController < ApplicationController
       params.require(:post).permit(:title, :url)
     end
 end
+
