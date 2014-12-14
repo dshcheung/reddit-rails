@@ -8,6 +8,7 @@
       <th>Url</th>
       <th>Time</th>
       <th>Link</th>
+      <th>User Email</th>
     </tr>
     <% @posts.each do |post| %>
       <tr>
@@ -16,6 +17,7 @@
         <td class="warning"><%= post.url %></td>
         <td class="info"><%= post.created_at.to_date.to_s %></td>
         <td class="danger"><%= link_to "link", post %></td>
+        <td class="active"><%= post.user.email %></td>
       </tr>
     <% end %>
   </thead>

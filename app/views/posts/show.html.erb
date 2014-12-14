@@ -2,6 +2,45 @@
   <%= @post.id %>
   <%= @post.title %>
   <%= @post.url %>
+  <%= @post.user.email %>
+  <%= @post.created_at %>
 </div>
+
+
+<h1>Comments for post</h1>
+<table class="table" data-toggle="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Post ID</th>
+      <th>Time</th>
+      <th>Link</th>
+      <th>User Email</th>
+    </tr>
+    <% @post.comments.each do |comment| %>
+      <tr>
+        <td class="active"><%= comment.id %></td>
+        <td class="success"><%= comment.title %></td>
+        <td class="warning"><%= comment.post_id %></td>
+        <td class="info"><%= comment.created_at.to_date.to_s %></td>
+        <td class="danger"><%= link_to "link", comment %></td>
+        <td class="active"><%= comment.user.email %></td>
+      </tr>
+    <% end %>
+  </thead>
+</table>
+
+
+
+
+<%= form_for @comment, :method => :post do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  
+  <%= f.text_field :post_id, :value => @post.id, :hidden => true %>
+
+  <%= f.submit "Submit Comment", :class => "btn btn-success"%>
+<% end %>
 
 <%= link_to "back", posts_path %>

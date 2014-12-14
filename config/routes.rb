@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -25,7 +26,12 @@ Rails.application.routes.draw do
 #              PUT    /comments/:id(.:format)      comments#update
 #              DELETE /comments/:id(.:format)      comments#destroy
 
+  resources :users, only: [:index, :show]
+# users GET    /users(.:format)               users#index
+# user  GET    /users/:id(.:format)           users#show
+
   get '/votes' => 'votes#index'
+
   # resources :posts
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

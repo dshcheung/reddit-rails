@@ -1,5 +1,8 @@
 class Post < ActiveRecord::Base
 
+  has_many :comments
+  belongs_to :user
+
   URL_REGEX = /https?:\/\/[\S]+/
 
   validates :title, :length => {maximum: 140, minimum:1}, :presence => true
@@ -11,11 +14,13 @@ class Post < ActiveRecord::Base
 
   private
   def span_free
-    last_post = Post.order(:created_at).last
-    latest_time = last_post.created_at
+    if Post.count > 1
+      last_post = Post.order(:created_at).last
+      latest_time = last_post.created_at
 
-    if latest_time > 1.minute.ago
-      self.errors.add(:base, "Cannot post within 1 minute")
+      if latest_time > 1.minute.ago
+        self.errors.add(:base, "Cannot post within 1 minute")
+      end
     end
   end
 

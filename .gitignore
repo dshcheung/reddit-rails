@@ -20,3 +20,5 @@
 .env
 
 .DS_Store
+
+/config/environments/development.rb

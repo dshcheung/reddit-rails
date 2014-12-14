@@ -1,0 +1,42 @@
+<h1><%= @user.email %> profile</h1>
+<h1>Post Created</h1>
+<table class="table" data-toggle="table">
+  <thead>
+    <tr>
+      <th>Post ID</th>
+      <th>Title</th>
+      <th>Time</th>
+      <th>Link</th>
+    </tr>
+    <% @user.posts.each do |post| %>
+      <tr>
+        <td class="active"><%= post.id %></td>
+        <td class="success"><%= post.title %></td>
+        <td class="info"><%= post.created_at.to_date.to_s %></td>
+        <td class="danger"><%= link_to "link", post %></td>
+      </tr>
+    <% end %>
+  </thead>
+</table>
+
+<h1>Comments to posts</h1>
+<table class="table" data-toggle="table">
+  <thead>
+    <tr>
+      <th>Comment ID</th>
+      <th>Title</th>
+      <th>Post ID</th>
+      <th>Time</th>
+      <th>Link to Post</th>
+    </tr>
+    <% @user.comments.each do |comment| %>
+      <tr>
+        <td class="active"><%= comment.id %></td>
+        <td class="success"><%= comment.title %></td>
+        <td class="warning"><%= comment.post_id %></td>
+        <td class="info"><%= comment.created_at.to_date.to_s %></td>
+        <td class="danger"><%= link_to "link", comment.post %></td>
+      </tr>
+    <% end %>
+  </thead>
+</table>

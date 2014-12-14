@@ -11,12 +11,4 @@
   <% end %>
 <% end %>
 
-<%=  form_for @comment, :method => :post do |c| %>
-  <%= c.label :title %>
-  <%= c.text_field :title %>
-
-  <%= c.label :postID %>
-  <%= c.text_field :postID %>
-
-  <%= c.submit "Submit" %>
-<% end %>
+<%= link_to "back", root_path %>
