@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
   # You can have the root of your site routed with "root"
   root 'static_pages#index'
 
@@ -30,7 +27,9 @@ Rails.application.routes.draw do
 # users GET    /users(.:format)               users#index
 # user  GET    /users/:id(.:format)           users#show
 
-  get '/votes' => 'votes#index'
+  post 'post_votes/:id', to: 'post_votes#create'
+
+
 
   # resources :posts
   # Example of regular route:

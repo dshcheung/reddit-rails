@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
   has_many :comments
   belongs_to :user
 
+  has_many :post_votes
   URL_REGEX = /https?:\/\/[\S]+/
 
   validates :title, :length => {maximum: 140, minimum:1}, :presence => true
