@@ -13,7 +13,7 @@
 
 <h1>Comments for post</h1>
 <table class="table" data-toggle="table">
-  <thead>
+  <thead id="table-rows">
     <tr>
       <th>ID</th>
       <th>Title</th>
@@ -23,7 +23,7 @@
       <th>User Email</th>
     </tr>
     <% @post.comments.each do |comment| %>
-      <tr>
+      <tr class="table-rows">
         <td class="active"><%= comment.id %></td>
         <td class="success"><%= comment.title %></td>
         <td class="warning"><%= comment.post_id %></td>
@@ -44,7 +44,10 @@
   
   <%= f.text_field :post_id, :value => @post.id, :hidden => true %>
 
-  <%= f.submit "Submit Comment", :class => "btn btn-success"%>
+  <%= f.submit "Submit Comment", :class => "btn btn-success", :id => "btn_comment"%>
 <% end %>
 
+<div id="error-message"></div>
+
 <%= link_to "back", posts_path %>
+
