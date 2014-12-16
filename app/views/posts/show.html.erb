@@ -6,8 +6,10 @@
   <%= @post.created_at %>
 </div>
 
-<%= button_to "Thumbs Up", "http://localhost:3000/post_votes/#{@post.id}" %> 
-<%= @post.post_votes.count %>
+<%= button_to "Thumbs Up", "#", :id => "btn_vote", 'data-id' => @post.id %>
+<h1 class="vote_count">
+  <%= @post.post_votes.count %>
+</h1>
 
 <h1>Comments for post</h1>
 <table class="table" data-toggle="table">

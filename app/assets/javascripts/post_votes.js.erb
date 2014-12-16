@@ -1,0 +1,18 @@
+$(document).ready(function() {
+  $(document).on('click', '#btn_vote', function(e) {
+    e.preventDefault();
+    $.ajax({
+      type: 'post',
+      url: '/post_votes/' + $(this).data('id'),
+      data: {
+        // authenticity_token: $(this).next().val()
+        authenticity_token: $('meta[name="csrf-token"').prop('content')
+      },
+      success: function(response, status) {
+        if (status == "success"){
+          $('.vote_count').html(parseInt($.trim($('.vote_count').html())) + 1);
+        };
+      }
+    });
+  });
+});
