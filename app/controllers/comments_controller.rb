@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, only: [:create]
   def index
     @comments = Comment.all
     @comment = Comment.new
@@ -6,10 +7,10 @@ class CommentsController < ApplicationController
 
   def create
     comment = current_user.comments.new(comment_params)
+    user = {}
+    user[:email] = comment.user.email
     if comment.save
-      redirect_to comment.post
-    else
-      redirect_to :back
+      render json: {:comment => comment, :user => user}, status: 201
     end
   end
 
