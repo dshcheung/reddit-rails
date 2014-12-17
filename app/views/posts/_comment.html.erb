@@ -1,0 +1,8 @@
+<tr class="table-rows">
+  <td class="active"><%= comment.id %></td>
+  <td class="success"><%= comment.title %></td>
+  <td class="warning"><%= comment.post_id %></td>
+  <td class="info"><%= comment.created_at.to_date.to_s %></td>
+  <td class="danger"><%= link_to "link", comment %></td>
+  <td class="active"><%= comment.user.email %></td>
+</tr>

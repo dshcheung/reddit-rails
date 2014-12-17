@@ -1,41 +1,39 @@
-$(document).ready(function() {
-  $(document).on('submit', '#new_comment', function(e) {
-    console.log("test")
-    $.ajax({
-      type: 'post',
-      url: '/comments/',
-      beforeSend: function(xhr){
-        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').prop('content'))
-      },
-      data: {
-        // authenticity_token: $(this).next().val()
-        comment: {
-          title: $('#comment_title').val(),
-          post_id: $('#comment_post_id').val(),
-        },
-        // authenticity_token: $('meta[name="csrf-token"]').prop('content')
-      },
-      success: function(response, status) {
-        console.log("<%= Comment.last.id %>")
-        $('#table-rows').append(dGenComment(response));
-        console.log(response);
-      },
-      error: function(response, status) {
-        $('#error-message').html(response.responseText)
-      }
-    });
-  });
-});
+// $(document).ready(function() {
+//   $(document).on('submit', '#new_comment', function(e) {
+//     console.log("test")
+//     $.ajax({
+//       type: 'post',
+//       url: '/comments/',
+//       beforeSend: function(xhr){
+//         xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').prop('content'))
+//       },
+//       data: {
+//         // authenticity_token: $(this).next().val()
+//           title: $('#comment_title').val(),
+//           post_id: $('#comment_post_id').val()
+//         // authenticity_token: $('meta[name="csrf-token"]').prop('content')
+//       },
+//       success: function(response, status) {
+//         console.log("<%= Comment.last.id %>")
+//         $('#table-rows').append(dGenComment(response));
+//         console.log(response);
+//       },
+//       error: function(response, status) {
+//         $('#error-message').html(response.responseText)
+//       }
+//     });
+//   });
+// });
 
-var dGenComment = function(r) {
-  return '' +
-  '<tr class="table-rows">' +
-  '<td class="active">1</td>' +
-  '<td class="success">2</td>' +
-  '<td class="warning">3</td>' +
-  '<td class="info">4</td>' +
-  '<td class="danger">5</td>' +
-  '<td class="active">6</td>' +
-  '</tr>';
-};
+// var dGenComment = function(r) {
+//   return '' +
+//   '<tr class="table-rows">' +
+//   '<td class="active">1</td>' +
+//   '<td class="success">2</td>' +
+//   '<td class="warning">3</td>' +
+//   '<td class="info">4</td>' +
+//   '<td class="danger">5</td>' +
+//   '<td class="active">6</td>' +
+//   '</tr>';
+// };
 

@@ -6,11 +6,18 @@ class CommentsController < ApplicationController
   end
 
   def create
-    comment = current_user.comments.new(comment_params)
+    @comment = current_user.comments.new(comment_params)
     user = {}
-    user[:email] = comment.user.email
-    if comment.save
-      render json: {:comment => comment, :user => user}, status: 201
+    user[:email] = @comment.user.email
+    if @comment.save
+      respond_to do |format|
+        format.js {render 'create.js.erb'}
+      end
+    else
+      flash[:message] = @comment.errors.messages
+      respond_to do |format|
+        format.js {render 'fail.js.erb'}
+      end
     end
   end
 

@@ -23,14 +23,7 @@
       <th>User Email</th>
     </tr>
     <% @post.comments.each do |comment| %>
-      <tr class="table-rows">
-        <td class="active"><%= comment.id %></td>
-        <td class="success"><%= comment.title %></td>
-        <td class="warning"><%= comment.post_id %></td>
-        <td class="info"><%= comment.created_at.to_date.to_s %></td>
-        <td class="danger"><%= link_to "link", comment %></td>
-        <td class="active"><%= comment.user.email %></td>
-      </tr>
+      <%= render :partial => 'posts/comment', :locals => {:comment => comment} %>
     <% end %>
   </thead>
 </table>
@@ -38,7 +31,7 @@
 
 
 
-<%= form_for @comment, :id => 'form_comment', :remote => true, :method => :post  do |f| %>
+<%= form_for @comment, :remote => true do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
   

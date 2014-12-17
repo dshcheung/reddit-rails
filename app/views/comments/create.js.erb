@@ -1,0 +1,7 @@
+var new_comment = "<%= raw escape_javascript(render :partial => 'posts/comment', :locals => {:comment => @comment}) %>";
+
+$('#table-rows').append(new_comment);
+
+$('#new_comment').trigger("reset");
+
+$('#error-message').html("");
