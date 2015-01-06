@@ -1,0 +1,12 @@
+<h1>Edit Profile</h1>
+
+<%= image_tag asset_url('cat.jpg') %>
+<%= asset_url('cat.jpg') %>
+
+<div>
+  <%= flash[:message] %> 
+  <%= form_for @user, :html => { :multipart => true } do |form| %>
+    <%= form.file_field :avatar %>
+    <%= form.submit "Upload Picture" %>
+  <% end %>
+</div>

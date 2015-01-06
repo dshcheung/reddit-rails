@@ -37,6 +37,10 @@ gem 'simple_form'
 gem 'devise'
 
 gem 'meta_request', group: :development
+
+#paperclick image uploader
+gem "paperclip", "~> 4.2"
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+, class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
 
   def index
